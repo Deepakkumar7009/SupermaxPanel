@@ -91,14 +91,14 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
             {/* ── Main content ── */}
             <div
               className={`
-                flex flex-col flex-1 min-w-0 overflow-hidden
+                flex flex-col flex-1 min-w-0
                 transition-all duration-300
                 ${collapsed ? "lg:ml-20" : "lg:ml-64"}
               `}
             >
               <AdminHeader onMenuClick={() => setMobileOpen((o) => !o)} />
               <main className="flex-1 overflow-y-auto">
-                <div className="p-4 md:p-6">
+                <div className="p-4 md:p-6 min-h-full">
                   {children}
                 </div>
               </main>

@@ -49,7 +49,7 @@ const orderSlice = createSlice({
         state.orders = action.payload.orders;
         state.total = action.payload.total;
         state.page = action.payload.page;
-        state.limit = action.payload.limit;
+        // Do NOT overwrite limit — list page manages its own limit
         state.totalOrderAmount = action.payload.totalOrderAmount ?? 0;
         state.totalReceivedAmount = action.payload.totalReceivedAmount ?? 0;
         state.totalPendingAmount = action.payload.totalPendingAmount ?? 0;

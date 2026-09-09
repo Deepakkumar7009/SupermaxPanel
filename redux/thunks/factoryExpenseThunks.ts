@@ -14,6 +14,9 @@ const fetchFactoryExpenses = createAsyncThunk<
     total: number;
     page: number;
     limit: number;
+    totalPendingAmount: number;
+    totalPayedAmount: number;
+    totalMonthAmount: number;
   },
   FetchFactoryExpensesParams | undefined,
   { rejectValue: string }
@@ -39,6 +42,9 @@ const fetchFactoryExpenses = createAsyncThunk<
         total: data.total ?? 0,
         page: data.page ?? 1,
         limit: data.limit ?? 10,
+        totalPendingAmount: data.totalPendingAmount ?? 0,
+        totalPayedAmount: data.totalPayedAmount ?? 0,
+        totalMonthAmount: data.totalMonthAmount ?? 0,
       };
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {

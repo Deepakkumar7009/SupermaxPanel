@@ -20,7 +20,6 @@ const AddEmployeeModal = ({ isOpen, setIsOpen }: AddEmployeeModalProps) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [advancePayment, setAdvancePayment] = useState<string>("");
 
   const handleSubmit = async () => {
     if (!name || !email || !phone) {
@@ -34,7 +33,6 @@ const AddEmployeeModal = ({ isOpen, setIsOpen }: AddEmployeeModalProps) => {
         email,
         phone,
         address: address || undefined,
-        advancePayment: advancePayment ? Number(advancePayment) : 0,
       })
     );
 
@@ -45,7 +43,6 @@ const AddEmployeeModal = ({ isOpen, setIsOpen }: AddEmployeeModalProps) => {
     setEmail("");
     setPhone("");
     setAddress("");
-    setAdvancePayment("");
   };
 
   return (
@@ -55,12 +52,6 @@ const AddEmployeeModal = ({ isOpen, setIsOpen }: AddEmployeeModalProps) => {
         <FloatingInput label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <FloatingInput label="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
         <FloatingInput label="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
-        <FloatingInput
-          label="Advance Payment"
-          type="number"
-          value={advancePayment}
-          onChange={(e) => setAdvancePayment(e.target.value)}
-        />
 
         <div className="flex justify-end gap-2">
           <Button onClick={() => setIsOpen(false)}>Cancel</Button>

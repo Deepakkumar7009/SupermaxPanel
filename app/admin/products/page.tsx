@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 import { RootState, AppDispatch } from "@/redux/store";
 import { fetchProducts } from "@/redux/thunks/productThunks";
 import { fetchCategories } from "@/redux/thunks/categoryThunks";
-import ProductModal from "@/components/modals/ProductModal";
 import CategoryModal from "@/components/modals/CategoryModal";
 import { Product } from "@/redux/types/product";
 import { Card } from "@/components/ui/card";
@@ -15,7 +15,6 @@ import Button from "@/components/common/Button";
 import Input from "@/components/common/Input";
 import Select from "@/components/common/Select";
 import { EyeIcon } from "lucide-react";
-import ProductViewModal from "@/components/modals/ProductViewModal";
 import Pagination from "@/components/common/Pagination";
 
 type SortConfig = {
@@ -25,15 +24,13 @@ type SortConfig = {
 
 const ProductsPage = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
   const { products, total, page, limit } = useSelector(
     (state: RootState) => state.product,
   );
   const { categories } = useSelector((state: RootState) => state.category);
 
-  const [addProductOpen, setAddProductOpen] = useState(false);
   const [addCategoryOpen, setAddCategoryOpen] = useState(false);
-  const [viewProduct, setViewProduct] = useState<Product | null>(null);
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -80,11 +77,6 @@ const ProductsPage = () => {
     { key: "actions" as keyof Product, label: "Actions" },
   ];
 
-  const handleView = (product: Product) => {
-    setViewProduct(product);
-    setIsOpenModal(true);
-  };
-
   const totalPages = Math.ceil(total / limit);
 
   return (
@@ -110,19 +102,13 @@ const ProductsPage = () => {
           ]}
         />
         <div className="flex gap-3 sm:ml-auto">
-          <Button onClick={() => setAddProductOpen(true)}>Add Product</Button>
+          <Button onClick={() => router.push("/admin/products/add")}>Add Product</Button>
           <Button onClick={() => setAddCategoryOpen(true)}>Add Category</Button>
         </div>
       </div>
 
       {/* Modals */}
-      <ProductModal isOpen={addProductOpen} setIsOpen={setAddProductOpen} />
       <CategoryModal isOpen={addCategoryOpen} setIsOpen={setAddCategoryOpen} />
-      <ProductViewModal
-        isOpen={isOpenModal}
-        setIsOpen={setIsOpenModal}
-        product={viewProduct}
-      />
       <Card className="p-4 rounded-xl">
         {/* Table */}
         <Table
@@ -161,7 +147,7 @@ const ProductsPage = () => {
               case "actions":
                 return (
                   <div className="flex gap-2">
-                    <Button onClick={() => handleView(product)}>
+                    <Button onClick={() => router.push(`/admin/products/${product._id}`)}>
                       <EyeIcon className="w-4 h-4" />
                     </Button>
                   </div>

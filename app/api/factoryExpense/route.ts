@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
-import { FilterQuery } from "mongoose";
+import mongoose, { FilterQuery } from "mongoose";
 import FactoryExpense, { IFactoryExpense } from "../../admin/models/FactoryExpense";
 import { getSessionUser } from "@/lib/session";
 
@@ -21,7 +21,8 @@ const getFactoryExpenses = async (req: NextRequest) => {
     const month = url.searchParams.get("month");
     const year = url.searchParams.get("year");
 
-    const query: FilterQuery<IFactoryExpense> = { userId };
+    const userObjectId = new mongoose.Types.ObjectId(userId);
+    const query: FilterQuery<IFactoryExpense> = { userId: userObjectId };
 
     if (search) {
       const regex = new RegExp(search, "i");
@@ -42,7 +43,7 @@ const getFactoryExpenses = async (req: NextRequest) => {
       FactoryExpense.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
       FactoryExpense.countDocuments(query),
       FactoryExpense.aggregate([
-        { $match: { userId } },
+        { $match: query },
         {
           $group: {
             _id: null,

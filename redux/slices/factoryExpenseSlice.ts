@@ -68,7 +68,7 @@ const factoryExpenseSlice = createSlice({
         state.expenses = action.payload.expenses ?? [];
         state.total = action.payload.total ?? 0;
         state.page = action.payload.page ?? 1;
-        state.limit = action.payload.limit ?? 10;
+        // Do NOT overwrite limit — list pages manage their own limit via setLimit()
         state.totalPendingAmount = action.payload.totalPendingAmount ?? 0;
         state.totalPayedAmount = action.payload.totalPayedAmount ?? 0;
         state.totalMonthAmount = action.payload.totalMonthAmount ?? 0;

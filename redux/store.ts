@@ -9,6 +9,7 @@ import factoryExpenseReducer from "./slices/factoryExpenseSlice";
 import rawMaterialReducer from "./slices/rawMaterialSlice";
 import dashboardReducer from "./slices/dashboardSlice";
 import userReducer from "./slices/userSlice";
+import advancePaymentReducer from "./slices/advancePaymentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     factoryExpense: factoryExpenseReducer,
     rawMaterial: rawMaterialReducer,
     dashboard: dashboardReducer,
+    advancePayment: advancePaymentReducer,
   },
 });
 

@@ -81,6 +81,79 @@
   --status-cancelled-text: #991b1b; /* text-red-700 */
   --status-cancelled-border: #fca5a5; /* border-red-600/20 */
 
+  /* Payment status badge colors (light) */
+  --payment-unpaid-bg:      #fef2f2;
+  --payment-unpaid-text:    #b91c1c;
+  --payment-unpaid-border:  #fecaca;
+
+  --payment-advance-bg:     #f5f3ff;
+  --payment-advance-text:   #6d28d9;
+  --payment-advance-border: #ddd6fe;
+
+  --payment-partial-bg:     #fff7ed;
+  --payment-partial-text:   #c2410c;
+  --payment-partial-border: #fed7aa;
+
+  --payment-paid-bg:        #f0fdf4;
+  --payment-paid-text:      #166534;
+  --payment-paid-border:    #bbf7d0;
+
+  --payment-overpaid-bg:    #fefce8;
+  --payment-overpaid-text:  #854d0e;
+  --payment-overpaid-border:#fef08a;
+
+  /* Warning / info banner (orange) */
+  --banner-warning-bg:      #fff7ed;
+  --banner-warning-text:    #7c2d12;
+  --banner-warning-border:  #fed7aa;
+  --banner-warning-label:   #c2410c;
+
+  /* Work entry status badges */
+  --work-status-active-bg:   #f0fdf4;
+  --work-status-active-text: #166534;
+  --work-status-off-bg:      #fef2f2;
+  --work-status-off-text:    #991b1b;
+
+  /* Payment type badges (ADVANCE vs SALARY_PAYMENT) */
+  --pay-type-advance-bg:     #fff7ed;
+  --pay-type-advance-text:   #c2410c;
+  --pay-type-salary-bg:      #f0fdf4;
+  --pay-type-salary-text:    #166534;
+
+  /* Advance / salary inline text colors */
+  --pay-advance-text:        #c2410c;
+  --pay-salary-text:         #166534;
+
+  /* Balance badge (positive / negative / zero) */
+  --balance-positive-bg:   #dcfce7;
+  --balance-positive-text: #166534;
+  --balance-negative-bg:   #fee2e2;
+  --balance-negative-text: #991b1b;
+  --balance-zero-bg:       #f3f4f6;
+  --balance-zero-text:     #4b5563;
+
+  /* Category card accent colors */
+  --cat-factory-color:  #ea580c;
+  --cat-factory-bg:     #fff7ed;
+  --cat-factory-border: #fed7aa;
+
+  --cat-rawmat-color:   #2563eb;
+  --cat-rawmat-bg:      #eff6ff;
+  --cat-rawmat-border:  #bfdbfe;
+
+  --cat-employee-color: #7c3aed;
+  --cat-employee-bg:    #f5f3ff;
+  --cat-employee-border:#ddd6fe;
+
+  --cat-orders-color:   #16a34a;
+  --cat-orders-bg:      #f0fdf4;
+  --cat-orders-border:  #bbf7d0;
+
+  /* Danger button (destructive action) */
+  --btn-danger-text:        #dc2626;
+  --btn-danger-border:      #fca5a5;
+  --btn-danger-hover-bg:    #fef2f2;
+
   /* New Table Header colors */
   --table-header-bg: oklch(0.92 0.05 260); /* Light purple-ish */
   --table-header-text: oklch(0.12 0 0);
@@ -150,6 +223,42 @@
   --auth-social-border:   rgba(255, 255, 255, 0.14);
   --auth-social-color:    rgba(255, 255, 255, 0.70);
   --auth-error-bg:        rgba(239, 68, 68, 0.10);
+
+  /* ── Form page variables (light) ── */
+  --form-section-bg:          #ffffff;
+  --form-section-header-bg:   #f8f9fb;
+  --form-section-title:       #374151;
+  --form-border:              #e5e7eb;
+  --form-border-hover:        #9ca3af;
+  --form-field-bg:            #ffffff;
+  --form-field-hover:         #f3f4f6;
+  --form-label:               #374151;
+  --form-placeholder:         #9ca3af;
+  --form-focus-ring:          rgba(37, 99, 235, 0.20);
+  --form-icon-bg:             #eff6ff;
+  --form-preview-bg:          #f0fdf4;
+  --form-preview-border:      #bbf7d0;
+  --form-error-bg:            #fef2f2;
+  --form-error-border:        #fecaca;
+
+  /* ── Product page section accents (light) ── */
+  --section-pricing-bg:          #f0fdf4;
+  --section-pricing-icon:        #16a34a;
+  --section-identity-bg:         #eff6ff;
+  --section-identity-icon:       #2563eb;
+  --section-classification-bg:   #f5f3ff;
+  --section-classification-icon: #7c3aed;
+  --section-description-bg:      #fff7ed;
+  --section-description-icon:    #ea580c;
+  --stat-strip-bg:                #f8fafc;
+  --stat-strip-border:            #e2e8f0;
+  --stat-strip-value:             #0f172a;
+  --chip-bg:                      #f1f5f9;
+  --chip-text:                    #334155;
+  --chip-border:                  #e2e8f0;
+  --thumb-border:                 #e5e7eb;
+  --sticky-bar-bg:                rgba(255, 255, 255, 0.92);
+  --sticky-bar-border:            #e5e7eb;
 }
 
 @theme inline {
@@ -199,6 +308,79 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Payment status badge colors */
+  --color-payment-unpaid-bg:      var(--payment-unpaid-bg);
+  --color-payment-unpaid-text:    var(--payment-unpaid-text);
+  --color-payment-unpaid-border:  var(--payment-unpaid-border);
+
+  --color-payment-advance-bg:     var(--payment-advance-bg);
+  --color-payment-advance-text:   var(--payment-advance-text);
+  --color-payment-advance-border: var(--payment-advance-border);
+
+  --color-payment-partial-bg:     var(--payment-partial-bg);
+  --color-payment-partial-text:   var(--payment-partial-text);
+  --color-payment-partial-border: var(--payment-partial-border);
+
+  --color-payment-paid-bg:        var(--payment-paid-bg);
+  --color-payment-paid-text:      var(--payment-paid-text);
+  --color-payment-paid-border:    var(--payment-paid-border);
+
+  --color-payment-overpaid-bg:    var(--payment-overpaid-bg);
+  --color-payment-overpaid-text:  var(--payment-overpaid-text);
+  --color-payment-overpaid-border:var(--payment-overpaid-border);
+
+  /* Warning / info banner */
+  --color-banner-warning-bg:     var(--banner-warning-bg);
+  --color-banner-warning-text:   var(--banner-warning-text);
+  --color-banner-warning-border: var(--banner-warning-border);
+  --color-banner-warning-label:  var(--banner-warning-label);
+
+  /* Work entry status badges */
+  --color-work-status-active-bg:   var(--work-status-active-bg);
+  --color-work-status-active-text: var(--work-status-active-text);
+  --color-work-status-off-bg:      var(--work-status-off-bg);
+  --color-work-status-off-text:    var(--work-status-off-text);
+
+  /* Payment type badges */
+  --color-pay-type-advance-bg:   var(--pay-type-advance-bg);
+  --color-pay-type-advance-text: var(--pay-type-advance-text);
+  --color-pay-type-salary-bg:    var(--pay-type-salary-bg);
+  --color-pay-type-salary-text:  var(--pay-type-salary-text);
+
+  /* Advance / salary inline text */
+  --color-pay-advance-text: var(--pay-advance-text);
+  --color-pay-salary-text:  var(--pay-salary-text);
+
+  /* Balance badge */
+  --color-balance-positive-bg:   var(--balance-positive-bg);
+  --color-balance-positive-text: var(--balance-positive-text);
+  --color-balance-negative-bg:   var(--balance-negative-bg);
+  --color-balance-negative-text: var(--balance-negative-text);
+  --color-balance-zero-bg:       var(--balance-zero-bg);
+  --color-balance-zero-text:     var(--balance-zero-text);
+
+  /* Category card accent colors */
+  --color-cat-factory-color:  var(--cat-factory-color);
+  --color-cat-factory-bg:     var(--cat-factory-bg);
+  --color-cat-factory-border: var(--cat-factory-border);
+
+  --color-cat-rawmat-color:   var(--cat-rawmat-color);
+  --color-cat-rawmat-bg:      var(--cat-rawmat-bg);
+  --color-cat-rawmat-border:  var(--cat-rawmat-border);
+
+  --color-cat-employee-color: var(--cat-employee-color);
+  --color-cat-employee-bg:    var(--cat-employee-bg);
+  --color-cat-employee-border:var(--cat-employee-border);
+
+  --color-cat-orders-color:   var(--cat-orders-color);
+  --color-cat-orders-bg:      var(--cat-orders-bg);
+  --color-cat-orders-border:  var(--cat-orders-border);
+
+  /* Danger button */
+  --color-btn-danger-text:     var(--btn-danger-text);
+  --color-btn-danger-border:   var(--btn-danger-border);
+  --color-btn-danger-hover-bg: var(--btn-danger-hover-bg);
 
   /* Order status colors */
   --color-status-pending-bg: var(--status-pending-bg);
@@ -283,26 +465,99 @@
   --error-foreground: oklch(0.92 0.2 25);
   --shadow-color: rgba(0, 0, 0, 0.45);
 
-  /* Dark mode overrides (optional, adjust if needed) */
-  --status-pending-bg: #fef3c7;
-  --status-pending-text: #b45309;
-  --status-pending-border: #fde68a;
+  /* Order / expense status badge colors — dark mode */
+  --status-pending-bg:      rgba(180, 83, 9, 0.20);
+  --status-pending-text:    #fcd34d;
+  --status-pending-border:  rgba(180, 83, 9, 0.40);
 
-  --status-processing-bg: #eff6ff;
-  --status-processing-text: #1d4ed8;
-  --status-processing-border: #93c5fd;
+  --status-processing-bg:   rgba(29, 78, 216, 0.20);
+  --status-processing-text: #93c5fd;
+  --status-processing-border: rgba(29, 78, 216, 0.40);
 
-  --status-shipped-bg: #f5f3ff;
-  --status-shipped-text: #5b21b6;
-  --status-shipped-border: #c4b5fd;
+  --status-shipped-bg:      rgba(91, 33, 182, 0.20);
+  --status-shipped-text:    #c4b5fd;
+  --status-shipped-border:  rgba(91, 33, 182, 0.40);
 
-  --status-delivered-bg: #ecfdf5;
-  --status-delivered-text: #166534;
-  --status-delivered-border: #86efac;
+  --status-delivered-bg:    rgba(22, 101, 52, 0.20);
+  --status-delivered-text:  #86efac;
+  --status-delivered-border: rgba(22, 101, 52, 0.40);
 
-  --status-cancelled-bg: #fef2f2;
-  --status-cancelled-text: #991b1b;
-  --status-cancelled-border: #fca5a5;
+  --status-cancelled-bg:    rgba(153, 27, 27, 0.20);
+  --status-cancelled-text:  #fca5a5;
+  --status-cancelled-border: rgba(153, 27, 27, 0.40);
+
+  /* Payment status badge colors (dark) */
+  --payment-unpaid-bg:      rgba(153, 27, 27, 0.20);
+  --payment-unpaid-text:    #fca5a5;
+  --payment-unpaid-border:  rgba(153, 27, 27, 0.40);
+
+  --payment-advance-bg:     rgba(109, 40, 217, 0.20);
+  --payment-advance-text:   #c4b5fd;
+  --payment-advance-border: rgba(109, 40, 217, 0.40);
+
+  --payment-partial-bg:     rgba(194, 65, 12, 0.20);
+  --payment-partial-text:   #fdba74;
+  --payment-partial-border: rgba(194, 65, 12, 0.40);
+
+  --payment-paid-bg:        rgba(22, 101, 52, 0.20);
+  --payment-paid-text:      #86efac;
+  --payment-paid-border:    rgba(22, 101, 52, 0.40);
+
+  --payment-overpaid-bg:    rgba(133, 77, 14, 0.20);
+  --payment-overpaid-text:  #fde047;
+  --payment-overpaid-border:rgba(133, 77, 14, 0.40);
+
+  /* Warning / info banner (dark) */
+  --banner-warning-bg:      rgba(194, 65, 12, 0.15);
+  --banner-warning-text:    #fed7aa;
+  --banner-warning-border:  rgba(194, 65, 12, 0.35);
+  --banner-warning-label:   #fdba74;
+
+  /* Work entry status badges (dark) */
+  --work-status-active-bg:   rgba(22, 101, 52, 0.20);
+  --work-status-active-text: #86efac;
+  --work-status-off-bg:      rgba(153, 27, 27, 0.20);
+  --work-status-off-text:    #fca5a5;
+
+  /* Payment type badges (dark) */
+  --pay-type-advance-bg:     rgba(194, 65, 12, 0.20);
+  --pay-type-advance-text:   #fdba74;
+  --pay-type-salary-bg:      rgba(22, 101, 52, 0.20);
+  --pay-type-salary-text:    #86efac;
+
+  /* Advance / salary inline text colors (dark) */
+  --pay-advance-text:        #fb923c;
+  --pay-salary-text:         #4ade80;
+
+  /* Balance badge (dark) */
+  --balance-positive-bg:   rgba(22, 101, 52, 0.25);
+  --balance-positive-text: #86efac;
+  --balance-negative-bg:   rgba(153, 27, 27, 0.25);
+  --balance-negative-text: #fca5a5;
+  --balance-zero-bg:       rgba(75, 85, 99, 0.30);
+  --balance-zero-text:     #9ca3af;
+
+  /* Category card accent colors (dark) */
+  --cat-factory-color:  #fb923c;
+  --cat-factory-bg:     rgba(194, 65, 12, 0.15);
+  --cat-factory-border: rgba(194, 65, 12, 0.35);
+
+  --cat-rawmat-color:   #60a5fa;
+  --cat-rawmat-bg:      rgba(37, 99, 235, 0.15);
+  --cat-rawmat-border:  rgba(37, 99, 235, 0.35);
+
+  --cat-employee-color: #c4b5fd;
+  --cat-employee-bg:    rgba(124, 58, 237, 0.15);
+  --cat-employee-border:rgba(124, 58, 237, 0.35);
+
+  --cat-orders-color:   #4ade80;
+  --cat-orders-bg:      rgba(22, 101, 52, 0.15);
+  --cat-orders-border:  rgba(22, 101, 52, 0.35);
+
+  /* Danger button (dark) */
+  --btn-danger-text:        #f87171;
+  --btn-danger-border:      rgba(153, 27, 27, 0.50);
+  --btn-danger-hover-bg:    rgba(153, 27, 27, 0.20);
 
   /* New Table Header colors */
   --table-header-bg: oklch(0.35 0.05 260); /* Dark purple-ish */
@@ -344,6 +599,42 @@
   --btn-success-bg:       #22c55e;
   --btn-success-hover-bg: #16a34a;
   --btn-danger-bg:        #ef4444;
+
+  /* ── Form page variables (dark) ── */
+  --form-section-bg:          oklch(0.26 0 0);
+  --form-section-header-bg:   oklch(0.28 0 0);
+  --form-section-title:       oklch(0.88 0 0);
+  --form-border:              oklch(0.35 0 0 / 60%);
+  --form-border-hover:        oklch(0.50 0 0);
+  --form-field-bg:            oklch(0.30 0 0);
+  --form-field-hover:         oklch(0.33 0 0);
+  --form-label:               oklch(0.85 0 0);
+  --form-placeholder:         oklch(0.55 0 0);
+  --form-focus-ring:          rgba(59, 130, 246, 0.25);
+  --form-icon-bg:             rgba(59, 130, 246, 0.15);
+  --form-preview-bg:          rgba(34, 197, 94, 0.10);
+  --form-preview-border:      rgba(34, 197, 94, 0.25);
+  --form-error-bg:            rgba(239, 68, 68, 0.10);
+  --form-error-border:        rgba(239, 68, 68, 0.30);
+
+  /* ── Product page section accents (dark) ── */
+  --section-pricing-bg:          rgba(34, 197, 94, 0.10);
+  --section-pricing-icon:        #4ade80;
+  --section-identity-bg:         rgba(59, 130, 246, 0.10);
+  --section-identity-icon:       #60a5fa;
+  --section-classification-bg:   rgba(124, 58, 237, 0.14);
+  --section-classification-icon: #c4b5fd;
+  --section-description-bg:      rgba(234, 88, 12, 0.12);
+  --section-description-icon:    #fb923c;
+  --stat-strip-bg:                oklch(0.28 0 0);
+  --stat-strip-border:            oklch(0.35 0 0 / 60%);
+  --stat-strip-value:             oklch(0.96 0 0);
+  --chip-bg:                      oklch(0.32 0 0);
+  --chip-text:                    oklch(0.88 0 0);
+  --chip-border:                  oklch(0.40 0 0 / 60%);
+  --thumb-border:                 oklch(0.38 0 0 / 60%);
+  --sticky-bar-bg:                rgba(38, 38, 38, 0.92);
+  --sticky-bar-border:            oklch(0.35 0 0 / 60%);
 }
 
 body {
@@ -377,17 +668,11 @@ body {
   100% { transform: translateY(0px)   translateX(0px)  scale(1);    }
 }
 
-/* ── Real water drop — transparent lens with rim highlight only ── */
 .drop {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
 
-  /*
-   * Almost fully transparent centre.
-   * Only the very edge gets a slight tint from refraction.
-   * This lets the background show through cleanly.
-   */
   background: radial-gradient(
     circle at 50% 50%,
     rgba(255, 255, 255, 0.00)  0%,
@@ -397,37 +682,23 @@ body {
     rgba(80,  140, 200, 0.28) 100%
   );
 
-  /* Thin bright rim — visible only on the lit (top-left) side */
   border: 1.5px solid rgba(200, 235, 255, 0.50);
 
   box-shadow:
-    /* Soft inner bright arc top-left — the lens catch-light */
     inset  5px  5px 12px rgba(255, 255, 255, 0.22),
-    /* Faint inner dark arc bottom-right — spherical depth */
     inset -3px -3px  8px rgba(30,  80, 140, 0.20),
-    /* Soft shadow pool below — refracted teal */
     0px 8px 20px rgba(0, 80, 150, 0.28),
-    /* Ambient outer glow */
     0px 0px 14px rgba(140, 210, 255, 0.06);
 
-  /* Lens distortion: slightly brighten + blur what's behind the drop */
   backdrop-filter: blur(3px) brightness(1.18) saturate(1.2);
   -webkit-backdrop-filter: blur(3px) brightness(1.18) saturate(1.2);
 }
 
-/*
- * PRIMARY SPECULAR — wide soft arc along the top-left inner edge.
- * Shaped like a banana / crescent, NOT a circle.
- */
 .drop::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  /*
-   * paint only the top-left arc bright:
-   * inner radial from top-left corner fading to nothing by the centre.
-   */
   background: radial-gradient(
     ellipse 70% 55% at 28% 26%,
     rgba(255, 255, 255, 0.82)  0%,
@@ -437,9 +708,6 @@ body {
   );
 }
 
-/*
- * PINPOINT GLINT — tiny hard bright dot, upper-right of the main arc.
- */
 .drop::after {
   content: "";
   position: absolute;
@@ -453,9 +721,6 @@ body {
   box-shadow: 0 0 3px 2px rgba(255, 255, 255, 0.55);
 }
 
-/* ── Water drops rising bottom → top ── */
-
-/* Rise from bottom, slight left/right wobble, fade out near top */
 @keyframes drop-rise {
   0%   { transform: translateY(0px)    translateX(0px)  scale(1);    opacity: 0;   }
   8%   { opacity: 0.9; }
@@ -483,23 +748,13 @@ body {
   100% { transform: translateY(-92vh)  translateX(-4px) scale(0.93); opacity: 0;   }
 }
 
-/*
- * Real water-drop TEARDROP shape:
- * - Round at the bottom (the heavy belly)
- * - Pointed/tapered at the top (pulled upward by motion)
- * border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%
- * gives the classic teardrop profile.
- * The drop is rotated 180deg because it rises (point faces up).
- */
 .drop-rise {
   position: absolute;
-  bottom: -60px;          /* spawn just below the viewport */
+  bottom: -60px;
   pointer-events: none;
 
-  /* Teardrop: wide round bottom, narrow tapered top */
   border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
 
-  /* Transparent centre, coloured rim — same real-water approach */
   background: radial-gradient(
     ellipse at 50% 65%,
     rgba(255, 255, 255, 0.00)  0%,
@@ -512,20 +767,15 @@ body {
   border: 1.5px solid rgba(200, 238, 255, 0.50);
 
   box-shadow:
-    /* inner top-left catch-light */
     inset  4px  4px 10px rgba(255, 255, 255, 0.22),
-    /* inner bottom-right depth shadow */
     inset -3px -3px  8px rgba(20,  70, 140, 0.20),
-    /* refracted shadow pool — elongated below the drop */
     0px 10px 22px -4px rgba(0, 80, 160, 0.30),
-    /* faint ambient glow */
     0px  0px 12px  2px rgba(120, 200, 255, 0.06);
 
   backdrop-filter: blur(3px) brightness(1.20) saturate(1.25);
   -webkit-backdrop-filter: blur(3px) brightness(1.20) saturate(1.25);
 }
 
-/* Crescent specular — upper-left arc of the teardrop belly */
 .drop-rise::before {
   content: "";
   position: absolute;
@@ -540,7 +790,6 @@ body {
   );
 }
 
-/* Tiny sharp pinpoint glint — upper-right */
 .drop-rise::after {
   content: "";
   position: absolute;
@@ -558,7 +807,10 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+  html,
   body {
     @apply bg-background text-foreground;
+    height: 100%;
+    overflow: hidden;
   }
 }

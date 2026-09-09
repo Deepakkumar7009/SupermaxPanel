@@ -22,7 +22,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <div className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}>
         {!isAdminRoute && <Navbar />}
         {children}
         {!isAdminRoute && <Footer />}

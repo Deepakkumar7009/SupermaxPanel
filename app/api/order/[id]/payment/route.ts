@@ -2,8 +2,9 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
-import Order from "@/app/admin/models/Order";
+import Order, { IOrder } from "@/app/admin/models/Order";
 import { getSessionUser } from "@/lib/session";
+import { sendInvoiceEmail } from "@/lib/mailer";
 
 interface Params {
   id: string;
@@ -78,6 +79,10 @@ const addPayment = async (
     );
 
     await order.save();
+
+    // Send payment-received invoice email (non-blocking)
+    const changeNote = `A payment of <strong>&#8377; ${amount.toFixed ? amount.toFixed(2) : amount}</strong> (${type} via ${method || "cash"}) has been recorded on your order.`;
+    sendInvoiceEmail("payment_added", order as IOrder & { _id: string }, changeNote);
 
     return NextResponse.json({ success: true, order });
   } catch (error) {

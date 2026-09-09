@@ -7,6 +7,7 @@ import Order, { IOrder } from "../../admin/models/Order";
 import Customer from "../../admin/models/Customer";
 import Product from "../../admin/models/Product";
 import { getSessionUser } from "@/lib/session";
+import { sendInvoiceEmail } from "@/lib/mailer";
 
 // ---------------- CREATE ORDER ----------------
 const createOrder = async (req: NextRequest) => {
@@ -104,6 +105,9 @@ const createOrder = async (req: NextRequest) => {
 
     customer.orders.push(newOrder._id);
     await customer.save();
+
+    // Send order-placed invoice email (non-blocking)
+    sendInvoiceEmail("order_placed", newOrder as IOrder & { _id: string });
 
     return NextResponse.json({ success: true, order: newOrder }, { status: 201 });
   } catch (err: unknown) {

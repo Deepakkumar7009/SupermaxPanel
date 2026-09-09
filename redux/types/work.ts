@@ -10,11 +10,12 @@ export interface WorkEntry {
 
 /* -------- API TYPES -------- */
 export interface FetchWorkEntriesResponse {
-  success: boolean;
-  entries: WorkEntry[];
-  total: number;    // total number of work entries
-  page: number;     // current page
-  limit: number;    // page size
+  success:         boolean;
+  entries:         WorkEntry[];
+  total:           number; // total number of work entries
+  page:            number; // current page
+  limit:           number; // page size
+  totalWorkAmount: number; // sum of all work-entry amounts for this employee
 }
 
 export interface CreateWorkEntryPayload {
@@ -28,4 +29,16 @@ export interface CreateWorkEntryPayload {
 export interface CreateWorkEntryResponse {
   success: boolean;
   entry: WorkEntry;
+}
+
+export interface UpdateWorkEntryPayload {
+  id:        string;
+  date:      string;
+  quantity?: number;
+  amount?:   number;
+}
+
+export interface UpdateWorkEntryResponse {
+  success: boolean;
+  entry:   WorkEntry;
 }

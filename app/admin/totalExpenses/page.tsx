@@ -49,11 +49,11 @@ const TotalExpensesPage = () => {
   const empState = useSelector((state: RootState) => state.employee);
   const ordersState = useSelector((state: RootState) => state.orders);
 
-  /* fetch all on mount / filter change */
+  /* fetch totals on mount / filter change (no limit override — keep list pages' limit intact) */
   useEffect(() => {
-    dispatch(fetchFactoryExpenses({ month, year, limit: 1 }));
-    dispatch(fetchRawMaterials({ month: Number(month), year: Number(year), limit: 1 }));
-    dispatch(fetchOrders({ limit: 1 }));
+    dispatch(fetchFactoryExpenses({ month, year }));
+    dispatch(fetchRawMaterials({ month: Number(month), year: Number(year) }));
+    dispatch(fetchOrders({}));
   }, [dispatch, month, year]);
 
   useEffect(() => {
@@ -101,9 +101,9 @@ const TotalExpensesPage = () => {
       pending: factory.totalPendingAmount,
       paid: factory.totalPayedAmount,
       href: "/admin/factoryExpense",
-      color: "text-orange-600",
-      bg: "bg-orange-50 dark:bg-orange-950/20",
-      border: "border-orange-200 dark:border-orange-800",
+      color: "text-[color:var(--color-cat-factory-color)]",
+      bg: "bg-[color:var(--color-cat-factory-bg)]",
+      border: "border-[color:var(--color-cat-factory-border)]",
     },
     {
       label: "Raw Material",
@@ -112,9 +112,9 @@ const TotalExpensesPage = () => {
       pending: rawMat.pendingAmount,
       paid: rawMat.paidAmount,
       href: "/admin/rawMaterial",
-      color: "text-blue-600",
-      bg: "bg-blue-50 dark:bg-blue-950/20",
-      border: "border-blue-200 dark:border-blue-800",
+      color: "text-[color:var(--color-cat-rawmat-color)]",
+      bg: "bg-[color:var(--color-cat-rawmat-bg)]",
+      border: "border-[color:var(--color-cat-rawmat-border)]",
     },
     {
       label: "Employee Expenses",
@@ -123,9 +123,9 @@ const TotalExpensesPage = () => {
       pending: empTotals.totalAdvance,
       paid: empTotals.totalPaid,
       href: "/admin/employees",
-      color: "text-purple-600",
-      bg: "bg-purple-50 dark:bg-purple-950/20",
-      border: "border-purple-200 dark:border-purple-800",
+      color: "text-[color:var(--color-cat-employee-color)]",
+      bg: "bg-[color:var(--color-cat-employee-bg)]",
+      border: "border-[color:var(--color-cat-employee-border)]",
       pendingLabel: "Advance",
       paidLabel: "Paid",
     },
@@ -136,9 +136,9 @@ const TotalExpensesPage = () => {
       pending: ordersState.totalPendingAmount,
       paid: ordersState.totalReceivedAmount,
       href: "/admin/orders",
-      color: "text-green-600",
-      bg: "bg-green-50 dark:bg-green-950/20",
-      border: "border-green-200 dark:border-green-800",
+      color: "text-[color:var(--color-cat-orders-color)]",
+      bg: "bg-[color:var(--color-cat-orders-bg)]",
+      border: "border-[color:var(--color-cat-orders-border)]",
       pendingLabel: "Due",
       paidLabel: "Received",
     },

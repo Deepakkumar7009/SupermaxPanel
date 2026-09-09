@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
 import mongoose, { FilterQuery } from "mongoose";
 import Employee, { IEmployee } from "../../admin/models/Employee";
+import AdvancePayment from "../../admin/models/AdvancePayment";
 import "@/app/admin/models/WorkEntry";
 import { getSessionUser } from "@/lib/session";
 
@@ -48,7 +49,30 @@ const getEmployees = async (req: NextRequest) => {
       Employee.countDocuments(query),
     ]);
 
-    return NextResponse.json({ success: true, employees, total, page, limit });
+    /* ---- sync advancePayment / paidPayment from AdvancePayment collection ---- */
+    const employeeIds = employees.map((e) => e._id);
+    const totalsAgg = await AdvancePayment.aggregate([
+      { $match: { employee: { $in: employeeIds }, userId: new mongoose.Types.ObjectId(userId) } },
+      {
+        $group: {
+          _id: "$employee",
+          advancePayment: { $sum: { $cond: [{ $eq: ["$type", "ADVANCE"] }, "$amount", 0] } },
+          paidPayment:    { $sum: { $cond: [{ $eq: ["$type", "SALARY_PAYMENT"] }, "$amount", 0] } },
+        },
+      },
+    ]);
+
+    const totalsMap = new Map(totalsAgg.map((t) => [String(t._id), t]));
+    const syncedEmployees = employees.map((emp) => {
+      const t = totalsMap.get(String(emp._id));
+      return {
+        ...emp,
+        advancePayment: t?.advancePayment ?? 0,
+        paidPayment:    t?.paidPayment    ?? 0,
+      };
+    });
+
+    return NextResponse.json({ success: true, employees: syncedEmployees, total, page, limit });
   } catch (error: unknown) {
     console.error(error);
     if (error instanceof Error) {

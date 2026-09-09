@@ -2,9 +2,10 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
-import Order from "@/app/admin/models/Order";
+import Order, { IOrder } from "@/app/admin/models/Order";
 import Product from "@/app/admin/models/Product";
 import { getSessionUser } from "@/lib/session";
+import { sendInvoiceEmail } from "@/lib/mailer";
 
 interface Params {
   id: string;
@@ -74,7 +75,12 @@ const updatedOrder = async (
       { _id: id, userId },
       data,
       { new: true }
-    ).lean();
+    );
+
+    if (updated && data.status) {
+      const changeNote = `Order status has been updated to <strong style="text-transform:capitalize;">${data.status}</strong>.`;
+      sendInvoiceEmail("status_update", updated as IOrder & { _id: string }, changeNote);
+    }
 
     return NextResponse.json({ success: true, order: updated });
   } catch (error) {

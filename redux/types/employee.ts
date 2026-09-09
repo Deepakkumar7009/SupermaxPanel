@@ -45,7 +45,6 @@ export interface CreateEmployeePayload {
   email: string;
   phone: string;
   address?: string;
-  advancePayment?: number;
 }
 
 export interface CreateEmployeeResponse {

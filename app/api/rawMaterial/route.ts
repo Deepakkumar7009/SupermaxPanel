@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
-import { FilterQuery } from "mongoose";
+import mongoose, { FilterQuery } from "mongoose";
 import RawMaterial, { IRawMaterial } from "../../admin/models/RawMaterial";
 import { getSessionUser } from "@/lib/session";
 
@@ -21,7 +21,8 @@ const getRawMaterials = async (req: NextRequest) => {
     const month = url.searchParams.get("month");
     const year = url.searchParams.get("year");
 
-    const query: FilterQuery<IRawMaterial> = { userId };
+    const userObjectId = new mongoose.Types.ObjectId(userId);
+    const query: FilterQuery<IRawMaterial> = { userId: userObjectId };
 
     if (search) {
       const regex = new RegExp(search, "i");

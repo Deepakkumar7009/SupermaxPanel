@@ -19,7 +19,7 @@ interface DialogModalProps {
 const DialogModal = ({ isOpen, setIsOpen, title, children }: DialogModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-lg w-full rounded-lg p-6" aria-describedby={undefined}>
+      <DialogContent className="sm:max-w-3xl w-full rounded-lg p-6" aria-describedby={undefined}>
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">{title}</DialogTitle>
         </DialogHeader>

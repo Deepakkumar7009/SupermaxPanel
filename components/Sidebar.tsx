@@ -95,7 +95,7 @@ const Sidebar = ({ collapsed, onMobileClose }: SidebarProps) => {
       </div>
 
       {/* Menu */}
-      <div className="mt-5 flex-1 overflow-hidden">
+      <div className="mt-5 flex-1 overflow-y-auto overflow-x-hidden">
         <ul className="space-y-1">
           {menuItems.map((item) => {
             const Icon = item.icon;

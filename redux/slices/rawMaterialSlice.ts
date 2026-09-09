@@ -37,8 +37,7 @@ const rawMaterialSlice = createSlice({
       state.materials = action.payload.materials;
       state.total = action.payload.total;
       state.page = action.payload.page;
-      state.limit = action.payload.limit;
-
+      // Do NOT overwrite limit — list page manages its own limit
       state.totalAmount = action.payload.totalAmount;
       state.pendingAmount = action.payload.pendingAmount;
       state.paidAmount = action.payload.paidAmount;
@@ -50,8 +49,15 @@ const rawMaterialSlice = createSlice({
     });
 
     builder.addCase(createRawMaterial.fulfilled, (state, action) => {
-      state.materials.unshift(action.payload.material);
+      const mat = action.payload.material;
+      state.materials.unshift(mat);
       state.total += 1;
+      state.totalAmount += mat.amount;
+      if (mat.status === "pending") {
+        state.pendingAmount += mat.amount;
+      } else if (mat.status === "paid") {
+        state.paidAmount += mat.amount;
+      }
     });
     builder.addCase(updateRawMaterial.fulfilled, (state, action) => {
       const index = state.materials.findIndex(
@@ -59,7 +65,23 @@ const rawMaterialSlice = createSlice({
       );
 
       if (index !== -1) {
+        const old = state.materials[index];
+        state.totalAmount -= old.amount;
+        if (old.status === "pending") {
+          state.pendingAmount -= old.amount;
+        } else if (old.status === "paid") {
+          state.paidAmount -= old.amount;
+        }
+
         state.materials[index] = action.payload;
+
+        const updated = action.payload;
+        state.totalAmount += updated.amount;
+        if (updated.status === "pending") {
+          state.pendingAmount += updated.amount;
+        } else if (updated.status === "paid") {
+          state.paidAmount += updated.amount;
+        }
       }
     });
   },
